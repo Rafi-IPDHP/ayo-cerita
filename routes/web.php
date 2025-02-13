@@ -33,6 +33,10 @@ Route::controller(AuthController::class)->group(function() {
     Route::post('/proses', 'proses')->name('auth.proses');
     Route::get('/logout', 'logout')->name('auth.logout');
     Route::get('/logout/psi-regis', 'logoutPsiRegis')->name('auth.logout.regisPsi');
+
+    Route::get('/psi/profile/{psikolog_id}', 'psiProfile')->name('profile.psikolog');
+    Route::post('/psi/profile/update-photo/{psikolog_id}', 'updatePhoto')->name('profile.psi.updatePhoto');
+    Route::post('/psi/profile/update-profile/{psikolog_id}', 'updateProfile')->name('profile.psi.updateProfile');
 });
 
 Route::controller(PsikologController::class)->group(function() {
@@ -41,6 +45,10 @@ Route::controller(PsikologController::class)->group(function() {
     Route::get('/psi/list-psikolog', 'listPsikolog')->middleware('auth')->name('psi.list');
 
     Route::get('/psi/{psikolog_id}', 'index')->middleware('auth')->name('psi.dashboard');
+
+    Route::post('/psi/add-comment/{appointment_id}', 'addComment')->name('psi.addComment');
+    Route::get('/psi/dijadwalkan-to-berlangsung/{appointment_id}', 'dijadwalkanToBerlangsung')->name('status.dijadwalkanToBerlangsung');
+    Route::get('/psi/berlangsung-to-selesai/{appointment_id}', 'berlangsungToSelesai')->name('status.berlangsungToSelesai');
 });
 
 Route::controller(MentalTestController::class)->middleware('auth')->group(function() {

@@ -37,7 +37,7 @@
                         <form action="{{ route('auth.authentication') }}" method="POST" class="form-login needs-validate" novalidate id="form-login">
                             @csrf
                             <div class="mb-1 has-validation">
-                                <label for="username" class="form-label fw-bold fs-5 ms-1 mt-2">Username</label>
+                                <label for="username" class="form-label fw-bold fs-5 ms-1 mt-2">Username <span style="color: red;">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text border-dark" style="background-color: #ffffff; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-right: none;"><img src="{{ asset('assets/icon/user.png') }}" alt="..." style="width: 20px;"></span>
                                     <input type="text" name="username" class="form-control border-dark" style="border-left: none; border-bottom-right-radius: 20px; border-top-right-radius: 20px;" id="username" aria-label="Username" aria-describedby="user" placeholder="Username" value="{{ old('username') }}" required>
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="mb-3 has-validation">
-                                <label for="password" class="form-label fw-bold fs-5 ms-1 mt-2">Password</label>
+                                <label for="password" class="form-label fw-bold fs-5 ms-1 mt-2">Password <span style="color: red;">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text border-dark" style="background-color: #ffffff; border-top-left-radius: 19px; border-bottom-left-radius: 20px; border-right: none;"><img src="{{ asset('assets/icon/gembok.png') }}" alt="..." style="width: 20px;"></span>
                                     <input type="password" name="password" id="password" class="form-control border-dark" style="border-right: none; border-left: none;" id="password" required>

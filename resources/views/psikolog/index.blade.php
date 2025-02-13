@@ -48,10 +48,13 @@
                                                     <span>Diagnosa</span>
                                                     <p class="mt-2 border border-2 p-2 border-white rounded-3">{{ $appointment->comment }}</p>
                                                 @else
-                                                    <form action="" method="post">
+                                                    <form action="{{ route('psi.addComment', ['appointment_id' => $appointment->id]) }}" method="post">
                                                         @csrf
                                                         <label for="comment" class="form-label">Diagnosa</label>
                                                         <textarea name="comment" cols="30" rows="3" class="form-control"></textarea>
+                                                        @error('comment')
+                                                            <div class="alert text-danger">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="d-flex justify-content-end">
                                                             <button type="submit" class="btn btn-warning mt-2 @if ($appointment->status == 'Dijadwalkan') disabled @endif">Kirim</button>
                                                         </div>
@@ -90,7 +93,7 @@
                                                 </div>
                                                 <div class="modal-footer border-0">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                                                    <a href="#" class="btn btn-warning px-3">Ya</a>
+                                                    <a href="{{ route('status.berlangsungToSelesai', ['appointment_id' => $appointment->id]) }}" class="btn btn-warning px-3">Ya</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -135,7 +138,7 @@
                                                 </div>
                                                 <div class="modal-footer border-0">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                                                    <a href="#" class="btn btn-warning px-3">Ya</a>
+                                                    <a href="{{ route('status.dijadwalkanToBerlangsung', ['appointment_id' => $appointment->id]) }}" class="btn btn-warning px-3">Ya</a>
                                                 </div>
                                             </div>
                                         </div>

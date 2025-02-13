@@ -27,9 +27,16 @@
                     <li class="nav-item">
                         <a class="nav-link @if (Request::segment(1) == 'tentang-kami') active @endif" href="{{ route('dashboard') }}#tentangKami">Tentang Kami</a>
                     </li>
+                    @cannot('isPsikolog')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('dashboard') }}#artikel">Artikel</a>
                     </li>
+                    @endcannot
+                    @can('isPsikolog')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('profile.psikolog', ['psikolog_id' => Auth::user()->psikolog->id]) }}">Profile</a>
+                    </li>
+                    @endcan
                 </ul>
             </div>
             <form class="d-flex my-2 my-lg-0">

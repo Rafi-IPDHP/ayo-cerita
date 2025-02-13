@@ -124,4 +124,36 @@ class PsikologController extends Controller
         $psikologs = Psikolog::all();
         return view('psikolog.list_psikolog', compact('psikologs'));
     }
+
+    public function addComment(Request $request, $appointment_id) {
+        $request->validate([
+            'comment' => 'required|min:3',
+        ],[
+            'comment.required' => 'Kolom diagnosa wajib diisi!',
+            'comment.min' => 'Diagnosa minimal memiliki 3 karakter!',
+        ]);
+
+        $appointment = Appointment::where('id', $appointment_id)->first();
+        $appointment->comment = $request->comment;
+        $appointment->save();
+
+        return back();
+    }
+
+    public function dijadwalkanToBerlangsung($appointment_id) {
+        $appointment = Appointment::where('id', $appointment_id)->first();
+        $appointment->status = 'Berlangsung';
+        $appointment->save();
+
+        return back();
+    }
+
+
+    public function berlangsungToSelesai($appointment_id) {
+        $appointment = Appointment::where('id', $appointment_id)->first();
+        $appointment->status = 'Selesai';
+        $appointment->save();
+
+        return back();
+    }
 }

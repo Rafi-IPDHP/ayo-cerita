@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('sip_doc');
             $table->string('institusi_pendidikan');
             $table->string('photo');
+            $table->string('desc', 200)->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

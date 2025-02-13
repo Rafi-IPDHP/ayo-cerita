@@ -20,6 +20,7 @@ class Psikolog extends Model
         'sip_doc',
         'institusi_pendidikan',
         'photo',
+        'desc',
         'user_id',
     ];
 
