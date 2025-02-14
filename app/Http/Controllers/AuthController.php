@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Pengguna;
 use App\Models\Psikolog;
@@ -169,11 +170,30 @@ class AuthController extends Controller
         $psikolog->spesialisasi = $request->spesialisasi;
         $psikolog->institusi_pendidikan = $request->institusi_pendidikan;
 
+        $str_path = 'public/' . $psikolog_id . 'str_doc';
+        $sip_path = 'public/' . $psikolog_id . 'sip_doc';
+
         if($request->str_doc) {
-            $psikolog->str_doc = $request->str_doc;
+            $str_doc = $request->file('str_doc');
+            $str_doc_name = $str_doc->getClientOriginalName();
+
+            if(!Storage::exists($str_path)) {
+                Storage::makeDirectory($str_path);
+            }
+
+            $str_doc->storeAs('public/' . $psikolog_id . '/str_doc' . '/' . $str_doc_name);
+            $psikolog->str_doc = $str_doc_name;
         }
 
         if($request->sip_doc) {
+            $sip_doc = $request->file('sip_doc');
+            $sip_doc_name = $sip_doc->getClientOriginalName();
+
+            if(!Storage::exists($sip_path)) {
+                Storage::makeDirectory($sip_path);
+            }
+
+            $sip_doc->storeAs('public/' . $psikolog_id . '/sip_doc' . '/' . $sip_doc_name);
             $psikolog->sip_doc = $request->sip_doc;
         }
 

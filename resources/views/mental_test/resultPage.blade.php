@@ -115,7 +115,7 @@
         <div class="row mb-5">
             <div class="col text-end">
                 @if ($result >= 71 && $result <= 100)
-                    <a href="" class="btn btn-outline-warning px-4 py-2">Selanjutnya</a>
+                    <a href="{{ route('psi.list') }}" class="btn btn-outline-warning px-4 py-2">Selanjutnya</a>
                 @elseif ($result >= 31 && $result <= 70)
                     <a href="https://rafiw50y.chat.qbusiness.us-west-2.on.aws/" target="blank" class="btn btn-outline-warning px-4 py-2">Selanjutnya</a>
                 @elseif ($result >= 0 && $result <= 30)
