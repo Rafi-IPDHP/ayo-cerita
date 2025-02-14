@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MentalTestController;
 use App\Http\Controllers\PostController;
@@ -65,8 +66,13 @@ Route::controller(ResetPasswordController::class)->group(function() {
     Route::post('/reset-password', 'resetPassword')->name('resetPassword');
 });
 
-Route::controller(PostController::class)->middleware('auth')->group(function () {
+Route::controller(PostController::class)->middleware('auth')->group(function() {
     Route::get('/post', 'index')->name('post.index');
     Route::get('/post/create', 'create')->name('post.create');
     Route::post('/post/store', 'store')->name('post.store');
+});
+
+Route::controller(AppointmentController::class)->middleware('auth')->group(function() {
+    Route::get('/appointment/create/{pengguna_id}/{psikolog_id}', 'create')->name('appointment.create');
+    Route::post('/appointment/store/', 'store')->name('appointment.store');
 });

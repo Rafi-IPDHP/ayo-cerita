@@ -12,9 +12,9 @@
             <div class="col d-flex">
                 <ul class="navbar-nav mx-auto gap-4 mt-2 mt-lg-0 fw-semibold">
                     @can('isPsikolog')
-                        <li class="nav-item">
-                            <a class="nav-link @if (Request::segment(1) == 'psi') active @endif" href="{{ route('psi.dashboard', ['psikolog_id' => Auth::user()->psikolog->id]) }}">Beranda</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if (Request::segment(1) == 'psi' && Request::segment(2) != 'profile') active @endif" href="{{ route('psi.dashboard', ['psikolog_id' => Auth::user()->psikolog->id]) }}">Beranda</a>
+                    </li>
                     @endcan
                     @cannot('isPsikolog')
                     <li class="nav-item">
@@ -34,7 +34,7 @@
                     @endcannot
                     @can('isPsikolog')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile.psikolog', ['psikolog_id' => Auth::user()->psikolog->id]) }}">Profile</a>
+                        <a class="nav-link @if (Request::segment(2) == 'profile') active @endif" href="{{ route('profile.psikolog', ['psikolog_id' => Auth::user()->psikolog->id]) }}">Profile</a>
                     </li>
                     @endcan
                 </ul>
