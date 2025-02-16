@@ -29,11 +29,17 @@
                     <li class="nav-item">
                         <a class="nav-link @if (Request::segment(1) == 'tentang-kami') active @endif" href="{{ route('dashboard') }}#tentangKami">Tentang Kami</a>
                     </li>
-                    @cannot('isPsikolog')
+                    @if (Auth::check())
+                        @cannot('isPsikolog')
+                        <li class="nav-item">
+                            <a class="nav-link @if(Request::segment(1) == 'appointment') active @endif" href="{{ route('appointment.index', ['pengguna_id' => Auth::user()->pengguna->id]) }}">Appointment</a>
+                        </li>
+                        @endcannot
+                    @else
                     <li class="nav-item">
-                        <a class="nav-link @if(Request::segment(1) == 'appointment') active @endif" href="{{ route('appointment.index', ['pengguna_id' => Auth::user()->pengguna->id]) }}">Appointment</a>
+                        <a class="nav-link" href="{{ route('dashboard') }}#artikel">Artikel</a>
                     </li>
-                    @endcannot
+                    @endif
                     @can('isPsikolog')
                     <li class="nav-item">
                         <a class="nav-link @if (Request::segment(2) == 'profile') active @endif" href="{{ route('profile.psikolog', ['psikolog_id' => Auth::user()->psikolog->id]) }}">Profile</a>
