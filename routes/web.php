@@ -73,6 +73,7 @@ Route::controller(PostController::class)->middleware('auth')->group(function() {
 });
 
 Route::controller(AppointmentController::class)->middleware('auth')->group(function() {
+    Route::get('/appointment/{pengguna_id}', 'index')->name('appointment.index');
     Route::get('/appointment/create/{pengguna_id}/{psikolog_id}', 'create')->name('appointment.create');
     Route::post('/appointment/store/', 'store')->name('appointment.store');
 });

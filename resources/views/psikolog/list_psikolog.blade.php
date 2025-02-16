@@ -37,13 +37,12 @@
                     @foreach ($psikologs as $psikolog)
                         @if ($psikolog->desc != null)
                             <div class="col-md-4 col-sm-5 my-3">
-                                <a href="#" class="text-decoration-none">
+                                <a href="{{ route('appointment.create', ['pengguna_id' => Auth::user()->pengguna->id, 'psikolog_id' => $psikolog->id]) }}" class="text-decoration-none">
                                     <div class="card rounded-5">
                                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
                                             <img src="{{ asset('./storage/'. $psikolog->id . '/photo' . '/' . $psikolog->photo) }}" alt="..." class="img-fluid my-2 rounded-circle" style="width: 150px; height: 150px;">
                                             <h4 class="card-title fw-bold text-black mb-0 pb-0">{{ $psikolog->nama }}</h4>
                                             <p class="mt-0 pt-0 text-decoration-none text-secondary"><small>Psikolog {{ $psikolog->spesialisasi }}</small></p>
-                                            {{-- <img src="{{ asset('./assets/icon/stars.png') }}" alt="..."> --}}
                                         </div>
                                         <div style="background-color: #FFF640;" class="mx-0 px-3 py-3 rounded-5">
                                             <p class="card-text text-black">{{ $psikolog->desc }}</p>
@@ -53,35 +52,12 @@
                             </div>
                         @endif
                     @endforeach
-                    <div class="col-md-4 col-sm-5 my-1">
-                        <a href="booking.html" class="text-decoration-none">
-                            <div class="card" style="border-radius: 30px;">
-                                <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                                    <img src="../assets/img/doctor2.png" alt="..." class="img-fluid my-2" style="width: 150px;">
-                                    <h4 class="card-title fw-bold text-black mb-2">Dr. Abdullah</h4>
-                                    <img src="../assets/icon/stars.png" alt="...">
-                                </div>
-                                <div style="background-color: #FFF640; border-radius: 30px;" class="mx-0 px-3 py-3">
-                                    <p class="card-text text-black">jalan keluar dari perasaan yang sulit.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-sm-5 my-1">
-                        <a href="booking.html" class="text-decoration-none">
-                            <div class="card" style="border-radius: 30px;">
-                                <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                                    <img src="../assets/img/doctor3.png" alt="..." class="img-fluid my-2" style="width: 150px;">
-                                    <h4 class="card-title fw-bold text-black mb-2">Dr. Enenk</h4>
-                                    <img src="../assets/icon/stars.png" alt="...">
-                                </div>
-                                <div style="background-color: #FFF640; border-radius: 30px;" class="mx-0 px-3 py-3">
-                                    <p class="card-text text-black">Dr. Enenk adalah seorang terapis keluarga dengan fokus pada perbaikan hubungan. Beliau membantu pasangan dan keluarga mengatasi konflik dan mencapai kesejahteraan bersama.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <a href="{{ route('dashboard') }}" class="btn btn-secondary">Kembali ke Beranda</a>
             </div>
         </div>
     </div>

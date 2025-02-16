@@ -141,6 +141,7 @@ class AuthController extends Controller
             'str_doc' => 'mimes:pdf|max:5120',
             'sip_doc' => 'mimes:pdf|max:5120',
             'institusi_pendidikan' => 'required|regex:/^[a-zA-Z\s]{3,40}$/u',
+            'desc' => 'min:10|max:200',
         ],[
             'nama.required' => 'Kolom nama wajib diisi!',
             'nama.regex' => 'Nama hanya boleh mengandung huruf, spasi dan titik! Nama minimal mengandung 3 karakter, maksimal 30 karakter!',
@@ -157,6 +158,8 @@ class AuthController extends Controller
             'sip_doc.max' => 'Dokumen SIP maksimal berukuran 5mb!',
             'institusi_pendidikan.required' => 'Kolom alumni universitas wajib diisi!',
             'institusi_pendidikan.regex' => 'Nama universitas hanya boleh mengandung huruf dan spasi! Nama universitas minimal mengandung 3 karakter, maksimal 40 karakter!',
+            'desc.min' => 'Deskripsi diri minimal berisi 10 karakter!',
+            'desc.max' => 'Deskripsi diri maksimal berisi 200 karakter!',
         ]);
 
         // dd($request);
@@ -195,6 +198,10 @@ class AuthController extends Controller
 
             $sip_doc->storeAs('public/' . $psikolog_id . '/sip_doc' . '/' . $sip_doc_name);
             $psikolog->sip_doc = $request->sip_doc;
+        }
+
+        if($request->desc) {
+            $psikolog->desc = $request->desc;
         }
 
         $psikolog->save();

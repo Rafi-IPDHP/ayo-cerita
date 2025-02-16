@@ -48,7 +48,7 @@ class User extends Authenticatable
     }
 
     public function pengguna() {
-        return $this->hasMany(Pengguna::class);
+        return $this->hasOne(Pengguna::class);
     }
 
     public function post() {

@@ -21,15 +21,17 @@
                         <a class="nav-link @if (Request::segment(1) == '') active @endif" href="{{ route('dashboard') }}" aria-current="page">Beranda<span class="visually-hidden">(current)</span></a>
                     </li>
                     @endcannot
+                    @cannot('isPsikolog')
                     <li class="nav-item">
                         <a class="nav-link @if(Request::segment(1) == 'mental-test') active @endif" href="{{ route('mental_test.index') }}">Mental Test</a>
                     </li>
+                    @endcannot
                     <li class="nav-item">
                         <a class="nav-link @if (Request::segment(1) == 'tentang-kami') active @endif" href="{{ route('dashboard') }}#tentangKami">Tentang Kami</a>
                     </li>
                     @cannot('isPsikolog')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dashboard') }}#artikel">Artikel</a>
+                        <a class="nav-link @if(Request::segment(1) == 'appointment') active @endif" href="{{ route('appointment.index', ['pengguna_id' => Auth::user()->pengguna->id]) }}">Appointment</a>
                     </li>
                     @endcannot
                     @can('isPsikolog')

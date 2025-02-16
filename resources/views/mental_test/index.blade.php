@@ -30,22 +30,22 @@
                             <div class="row w-75 bg-black rounded-5">
                                 <div class="col d-flex justify-content-center align-items-center gap-4 py-4">
                                     <input type="radio" class="btn-check" name="question1" id="opt1_1" autocomplete="off" value="senang">
-                                    <label for="opt1_1" class="btn btn-outline-light d-flex flex-column px-3">
+                                    <label for="opt1_1" class="btn btn-outline-light d-flex flex-column px-3 border-0">
                                         <img src="{{ asset('assets/icon/bahagia_icon.png') }}" alt="bahagia" style="width: 80px">
                                         Senang
                                     </label>
                                     <input type="radio" class="btn-check" name="question1" id="opt2_1" autocomplete="off" value="datar">
-                                    <label for="opt2_1" class="btn btn-outline-light d-flex flex-column px-3">
+                                    <label for="opt2_1" class="btn btn-outline-light d-flex flex-column px-3 border-0">
                                         <img src="{{ asset('assets/icon/datar_icon.png') }}" alt="datar" style="width: 80px">
                                         Datar
                                     </label>
                                     <input type="radio" class="btn-check" name="question1" id="opt3_1" autocomplete="off" value="sedih">
-                                    <label for="opt3_1" class="btn btn-outline-light d-flex flex-column px-3">
+                                    <label for="opt3_1" class="btn btn-outline-light d-flex flex-column px-3 border-0">
                                         <img src="{{ asset('assets/icon/sedih_icon.png') }}" alt="sedih" style="width: 80px">
                                         Sedih
                                     </label>
                                     <input type="radio" class="btn-check" name="question1" id="opt4_1" autocomplete="off" value="marah">
-                                    <label for="opt4_1" class="btn btn-outline-light d-flex flex-column px-3">
+                                    <label for="opt4_1" class="btn btn-outline-light d-flex flex-column px-3 border-0">
                                         <img src="{{ asset('assets/icon/marah_icon.png') }}" alt="marah" style="width: 80px">
                                         Marah
                                     </label>

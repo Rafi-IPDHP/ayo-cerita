@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
+    public function index($pengguna_id) {
+        $appointments = Appointment::where('pengguna_id', $pengguna_id)->orderBy('tanggal_konsul')->get();
+        return view('appointment.index', compact('appointments'));
+    }
+
     public function create($pengguna_id, $psikolog_id) {
         $pengguna = Pengguna::where('id', $pengguna_id)->first();
         $psikolog = Psikolog::where('id', $psikolog_id)->first();
@@ -32,6 +37,6 @@ class AppointmentController extends Controller
             'tanggal_konsul' => $request['tanggal_konsul'],
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('appointment.index', ['pengguna_id' => $request->pengguna_id])->withSuccess('Selamat appointment Anda berhasil dibuat!');
     }
 }
