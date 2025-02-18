@@ -75,7 +75,7 @@
         </div>
         <div class="row">
             <div class="col d-flex justify-content-end">
-                <a href="{{ url()->previous() }}" class="btn btn-secondary px-4 me-2">Kembali</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-secondary px-4 me-2">Kembali</a>
             </div>
         </div>
     </div>
